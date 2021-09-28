@@ -43,9 +43,9 @@ class DiffableTableViewController<SectionModel>: UIViewController where SectionM
     }
 
     private func createDataSource() {
-        // Delegate the cell provider functionality to the model.
+        // The cell provider uses the model to dequeue and configure the cell.
         dataSource = DataSourceType(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell in
-            model.configureCell(in: tableView, at: indexPath)
+            model.dequeueAndConfigureCell(in: tableView, for: indexPath)
         }
     }
 }

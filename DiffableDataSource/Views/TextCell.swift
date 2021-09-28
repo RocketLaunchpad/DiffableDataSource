@@ -8,6 +8,7 @@
 import UIKit
 
 class TextCell: TableViewCell, ModelConfigurableTableViewCell {
+
     private let _titleLabel = UILabel(frame: .zero).forAutoLayout().then {
         $0.textAlignment = .center
         $0.numberOfLines = 0

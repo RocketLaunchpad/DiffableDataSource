@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Strategy to recreate a snapshot from scratch every time a change is made. This is mainly intended to demonstrate that you can recreate the entire snapshot and the diffable data source will still correctly handle the updates.
 class RecreateSnapshot: SnapshotStrategy {
 
     private var imageSectionContents: [AnyTableViewCellModel] = []
@@ -41,10 +42,16 @@ class RecreateSnapshot: SnapshotStrategy {
 
     private func createAndApplySnapshot(dataSource: DefaultTableViewController.DataSourceType) {
         var snapshot = DefaultTableViewController.SnapshotType()
-        snapshot.appendSections(DefaultTableViewControllerSection.allCases)
 
-        snapshot.appendItems(imageSectionContents, toSection: .defaultImageSection)
-        snapshot.appendItems(textSectionContents, toSection: .defaultTextSection)
+        if !imageSectionContents.isEmpty {
+            snapshot.appendSections([.defaultImageSection])
+            snapshot.appendItems(imageSectionContents, toSection: .defaultImageSection)
+        }
+
+        if !textSectionContents.isEmpty {
+            snapshot.appendSections([.defaultTextSection])
+            snapshot.appendItems(textSectionContents, toSection: .defaultTextSection)
+        }
 
         dataSource.apply(snapshot)
     }

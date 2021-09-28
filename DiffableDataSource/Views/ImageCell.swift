@@ -29,7 +29,7 @@ class ImageCell: TableViewCell, ModelConfigurableTableViewCell {
     }
 
     func configure(with model: ImageModel) {
-        _imageView.image = UIImage(systemName: model.imageSystemName)
+        _imageView.image = model.image
         _titleLabel.text = model.title
     }
 }

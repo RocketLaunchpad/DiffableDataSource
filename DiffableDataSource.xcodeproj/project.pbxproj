@@ -34,6 +34,7 @@
 		C59F87BC2703698900D528B5 /* EditSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSnapshot.swift; sourceTree = "<group>"; };
 		C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStrategy.swift; sourceTree = "<group>"; };
 		C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecreateSnapshot.swift; sourceTree = "<group>"; };
+		C59F87C32703980300D528B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5D7EE1026FE4C3F00791F16 /* DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D7EE1326FE4C3F00791F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5D7EE1C26FE4C4200791F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		C5D7EE0726FE4C3F00791F16 = {
 			isa = PBXGroup;
 			children = (
+				C59F87C32703980300D528B5 /* README.md */,
 				C5D7EE1226FE4C3F00791F16 /* DiffableDataSource */,
 				C5D7EE1126FE4C3F00791F16 /* Products */,
 			);

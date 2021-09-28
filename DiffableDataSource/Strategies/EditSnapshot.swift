@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Strategy to edit a snapshot in place.
 class EditSnapshot: SnapshotStrategy {
 
     func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel, in dataSource: DefaultTableViewController.DataSourceType) {

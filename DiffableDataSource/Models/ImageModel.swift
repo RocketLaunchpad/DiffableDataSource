@@ -9,14 +9,21 @@ import UIKit
 
 struct ImageModel: TableViewCellModel, Hashable, CryptoHashable {
 
+    typealias CellType = ImageCell
+
     var title: String
 
     var imageSystemName: String
+}
 
-    func configureCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueConfiguredCell(for: indexPath, with: self) as ImageCell
+extension ImageModel {
+
+    var image: UIImage? {
+        return UIImage(systemName: imageSystemName)
     }
 }
+
+// MARK: - Placeholder model creation
 
 extension ImageModel {
 
