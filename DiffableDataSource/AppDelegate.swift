@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create one tab per strategy.
         let tabs = [
             UINavigationController(rootViewController:
-                DefaultViewController().then {
+                DefaultTableViewController().then {
                     // Configure the view controller & its strategy.
                     $0.strategy = EditSnapshot()
                     $0.title = "Edit Snapshot"
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 },
 
             UINavigationController(rootViewController:
-                DefaultViewController().then {
+                DefaultTableViewController().then {
                     // Configure the view controller & its strategy.
                     $0.strategy = RecreateSnapshot()
                     $0.title = "Recreate Snapshot"

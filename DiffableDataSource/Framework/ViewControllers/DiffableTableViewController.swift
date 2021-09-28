@@ -7,18 +7,28 @@
 
 import UIKit
 
+/// Base implementation of a table view controller that uses a diffable data source.
+///
+/// This allows heterogeneous cell models via the `AnyTableViewCellModel` type-erasure. These models are used as item identifiers in the underlying diffable data source.
+///
+/// The `SectionModel` parameterized-type is the section identifier type specified by subclasses.
+///
 class DiffableTableViewController<SectionModel>: UIViewController where SectionModel: Hashable {
 
-    typealias DataSourceType = UITableViewDiffableDataSource<SectionModel, AnyCellModel>
+    /// The diffable data source type for this type. This is simply an abbreviation to simplify other declarations.
+    typealias DataSourceType = UITableViewDiffableDataSource<SectionModel, AnyTableViewCellModel>
 
-    typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionModel, AnyCellModel>
+    /// The snapshot type for this type. This is simply an abbreviation to simplify other declarations.
+    typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionModel, AnyTableViewCellModel>
 
     private(set) var tableView: UITableView!
 
+    /// The table view style. Subclasses can modify this before calling `super.viewDidLoad()`. Modifying this value after calling `super.viewDidLoad()` will have no effect.
     var style: UITableView.Style = .plain
 
-    var dataSource: DataSourceType!
+    private(set) var dataSource: DataSourceType!
 
+    /// Note: Subclasses must call `super.viewDidLoad()`
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,9 +43,9 @@ class DiffableTableViewController<SectionModel>: UIViewController where SectionM
     }
 
     private func createDataSource() {
-        let provider: DataSourceType.CellProvider = { (tableView, indexPath, model) -> UITableViewCell in
+        // Delegate the cell provider functionality to the model.
+        dataSource = DataSourceType(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell in
             model.configureCell(in: tableView, at: indexPath)
         }
-        dataSource = DataSourceType(tableView: tableView, cellProvider: provider)
     }
 }

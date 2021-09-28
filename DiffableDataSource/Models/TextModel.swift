@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TextModel: CellModel, Hashable, CryptoHashable {
+struct TextModel: TableViewCellModel, Hashable, CryptoHashable {
 
     static let loremIpsum = """
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore \

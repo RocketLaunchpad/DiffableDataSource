@@ -1,5 +1,5 @@
 //
-//  AnyCellModel.swift
+//  AnyTableViewCellModel.swift
 //  DiffableDataSource
 //
 //  Created by Paul Calnan on 9/24/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AnyCellModel: CellModel, Hashable {
+struct AnyTableViewCellModel: TableViewCellModel, Hashable {
 
     private let _configureCell: (UITableView, IndexPath) -> UITableViewCell
 
@@ -15,7 +15,7 @@ struct AnyCellModel: CellModel, Hashable {
 
     private let _hashInto: (inout Hasher) -> Void
 
-    init<ModelType>(_ model: ModelType) where ModelType: CellModel & Hashable & CryptoHashable {
+    init<ModelType>(_ model: ModelType) where ModelType: TableViewCellModel & Hashable & CryptoHashable {
         _configureCell = { (tableView, indexPath) -> UITableViewCell in
             model.configureCell(in: tableView, at: indexPath)
         }
@@ -37,7 +37,7 @@ struct AnyCellModel: CellModel, Hashable {
         _hashInto(&hasher)
     }
 
-    static func == (lhs: AnyCellModel, rhs: AnyCellModel) -> Bool {
+    static func == (lhs: AnyTableViewCellModel, rhs: AnyTableViewCellModel) -> Bool {
         return lhs._cryptoHash() == rhs._cryptoHash()
     }
 }

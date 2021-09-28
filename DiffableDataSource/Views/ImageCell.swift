@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageCell: Cell, ModelConfigurableCell {
+class ImageCell: TableViewCell, ModelConfigurableTableViewCell {
     private let _imageView = UIImageView(frame: .zero).forAutoLayout().then {
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .link

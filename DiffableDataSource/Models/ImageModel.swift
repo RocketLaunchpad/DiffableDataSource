@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ImageModel: CellModel, Hashable, CryptoHashable {
+struct ImageModel: TableViewCellModel, Hashable, CryptoHashable {
 
     var title: String
 

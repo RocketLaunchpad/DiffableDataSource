@@ -9,17 +9,17 @@ import UIKit
 
 protocol SnapshotStrategy {
 
-    func insert(_ model: AnyCellModel, after selectedItem: AnyCellModel, in dataSource: DefaultViewController.DataSourceType)
+    func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel, in dataSource: DefaultTableViewController.DataSourceType)
 
-    func append(_ model: AnyCellModel, toSection section: DefaultViewControllerSection, in dataSource: DefaultViewController.DataSourceType)
+    func append(_ model: AnyTableViewCellModel, toSection section: DefaultTableViewControllerSection, in dataSource: DefaultTableViewController.DataSourceType)
 }
 
 extension SnapshotStrategy {
 
-    func insertOrAppend(_ model: AnyCellModel,
-                        after selectedItem: AnyCellModel?,
-                        orAtEndOf section: DefaultViewControllerSection,
-                        in dataSource: DefaultViewController.DataSourceType) {
+    func insertOrAppend(_ model: AnyTableViewCellModel,
+                        after selectedItem: AnyTableViewCellModel?,
+                        orAtEndOf section: DefaultTableViewControllerSection,
+                        in dataSource: DefaultTableViewController.DataSourceType) {
 
         if let item = selectedItem {
             insert(model, after: item, in: dataSource)

@@ -1,5 +1,5 @@
 //
-//  DefaultViewController.swift
+//  DefaultTableViewController.swift
 //  DiffableDataSource
 //
 //  Created by Paul Calnan on 9/24/21.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum DefaultViewControllerSection: Int, CaseIterable {
+enum DefaultTableViewControllerSection: Int, CaseIterable {
     case defaultImageSection
     case defaultTextSection
 }
 
-class DefaultViewController: DiffableTableViewController<DefaultViewControllerSection> {
+class DefaultTableViewController: DiffableTableViewController<DefaultTableViewControllerSection> {
 
     private var imageCounter = 0
 
@@ -57,16 +57,16 @@ class DefaultViewController: DiffableTableViewController<DefaultViewControllerSe
         present(actionSheet, animated: true)
     }
 
-    private func addImage(after selectedItem: AnyCellModel?) {
-        let model = AnyCellModel(ImageModel.model(forIndex: imageCounter))
+    private func addImage(after selectedItem: AnyTableViewCellModel?) {
+        let model = AnyTableViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
         strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
 
         itemAdded()
     }
 
-    private func addText(after selectedItem: AnyCellModel?) {
-        let model = AnyCellModel(TextModel.model(forIndex: labelCounter))
+    private func addText(after selectedItem: AnyTableViewCellModel?) {
+        let model = AnyTableViewCellModel(TextModel.model(forIndex: labelCounter))
         labelCounter += 1
         strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
 

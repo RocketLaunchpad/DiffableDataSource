@@ -9,11 +9,11 @@ import UIKit
 
 class RecreateSnapshot: SnapshotStrategy {
 
-    private var imageSectionContents: [AnyCellModel] = []
+    private var imageSectionContents: [AnyTableViewCellModel] = []
 
-    private var textSectionContents: [AnyCellModel] = []
+    private var textSectionContents: [AnyTableViewCellModel] = []
 
-    func insert(_ model: AnyCellModel, after selectedItem: AnyCellModel, in dataSource: DefaultViewController.DataSourceType) {
+    func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel, in dataSource: DefaultTableViewController.DataSourceType) {
         if let index = imageSectionContents.firstIndex(of: selectedItem) {
             imageSectionContents.insert(model, at: index + 1)
         }
@@ -27,7 +27,7 @@ class RecreateSnapshot: SnapshotStrategy {
         createAndApplySnapshot(dataSource: dataSource)
     }
 
-    func append(_ model: AnyCellModel, toSection section: DefaultViewControllerSection, in dataSource: DefaultViewController.DataSourceType) {
+    func append(_ model: AnyTableViewCellModel, toSection section: DefaultTableViewControllerSection, in dataSource: DefaultTableViewController.DataSourceType) {
         switch section {
         case .defaultImageSection:
             imageSectionContents.append(model)
@@ -39,9 +39,9 @@ class RecreateSnapshot: SnapshotStrategy {
         createAndApplySnapshot(dataSource: dataSource)
     }
 
-    private func createAndApplySnapshot(dataSource: DefaultViewController.DataSourceType) {
-        var snapshot = DefaultViewController.SnapshotType()
-        snapshot.appendSections(DefaultViewControllerSection.allCases)
+    private func createAndApplySnapshot(dataSource: DefaultTableViewController.DataSourceType) {
+        var snapshot = DefaultTableViewController.SnapshotType()
+        snapshot.appendSections(DefaultTableViewControllerSection.allCases)
 
         snapshot.appendItems(imageSectionContents, toSection: .defaultImageSection)
         snapshot.appendItems(textSectionContents, toSection: .defaultTextSection)

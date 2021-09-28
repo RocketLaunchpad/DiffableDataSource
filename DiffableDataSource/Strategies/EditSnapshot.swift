@@ -9,13 +9,13 @@ import UIKit
 
 class EditSnapshot: SnapshotStrategy {
 
-    func insert(_ model: AnyCellModel, after selectedItem: AnyCellModel, in dataSource: DefaultViewController.DataSourceType) {
+    func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel, in dataSource: DefaultTableViewController.DataSourceType) {
         var snapshot = dataSource.snapshot()
         snapshot.insertItems([model], afterItem: selectedItem)
         dataSource.apply(snapshot)
     }
 
-    func append(_ model: AnyCellModel, toSection section: DefaultViewControllerSection, in dataSource: DefaultViewController.DataSourceType) {
+    func append(_ model: AnyTableViewCellModel, toSection section: DefaultTableViewControllerSection, in dataSource: DefaultTableViewController.DataSourceType) {
         var snapshot = dataSource.snapshot()
 
         if !snapshot.sectionIdentifiers.contains(section) {

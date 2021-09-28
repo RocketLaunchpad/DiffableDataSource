@@ -1,5 +1,5 @@
 //
-//  Cell.swift
+//  TableViewCell.swift
 //  DiffableDataSource
 //
 //  Created by Paul Calnan on 9/24/21.
@@ -9,8 +9,10 @@ import Then
 import UIKit
 import UIKitExtensions
 
-class Cell: UITableViewCell {
+/// Default table view cell. Wraps a vertical stack view intended to contain subviews.
+class TableViewCell: UITableViewCell {
 
+    /// The vertical stack view where subviews are to be added.
     let stackView = UIStackView().forAutoLayout().then {
         $0.axis = .vertical
         $0.spacing = 16
@@ -38,11 +40,13 @@ class Cell: UITableViewCell {
         cellDidLoad()
     }
 
+    /// Convenience function to add each of the views to the stack view.
     func addArrangedSubviews(_ views: UIView...) {
         views.forEach {
             stackView.addArrangedSubview($0)
         }
     }
 
+    /// Called after the view is loaded. Subclasses should override this function and add its UI elements to the stack view.
     func cellDidLoad() { }
 }

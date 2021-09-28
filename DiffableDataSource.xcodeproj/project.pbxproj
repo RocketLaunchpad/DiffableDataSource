@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C59F87BB26FE66E400D528B5 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BA26FE66E400D528B5 /* DefaultViewController.swift */; };
+		C59F87BB26FE66E400D528B5 /* DefaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */; };
 		C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BC2703698900D528B5 /* EditSnapshot.swift */; };
 		C59F87C02703728B00D528B5 /* SnapshotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */; };
 		C59F87C2270376BF00D528B5 /* RecreateSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */; };
 		C5D7EE1426FE4C3F00791F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE1326FE4C3F00791F16 /* AppDelegate.swift */; };
 		C5D7EE1D26FE4C4200791F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D7EE1C26FE4C4200791F16 /* Assets.xcassets */; };
 		C5D7EE2026FE4C4200791F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D7EE1E26FE4C4200791F16 /* LaunchScreen.storyboard */; };
-		C5D7EE2926FE4C9600791F16 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2826FE4C9600791F16 /* CellModel.swift */; };
-		C5D7EE2B26FE4CC400791F16 /* AnyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2A26FE4CC400791F16 /* AnyCellModel.swift */; };
+		C5D7EE2926FE4C9600791F16 /* TableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2826FE4C9600791F16 /* TableViewCellModel.swift */; };
+		C5D7EE2B26FE4CC400791F16 /* AnyTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2A26FE4CC400791F16 /* AnyTableViewCellModel.swift */; };
 		C5D7EE2D26FE4CD900791F16 /* CryptoHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2C26FE4CD900791F16 /* CryptoHashable.swift */; };
-		C5D7EE3026FE523400791F16 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2F26FE523400791F16 /* Cell.swift */; };
-		C5D7EE3226FE537700791F16 /* ModelConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE3126FE537700791F16 /* ModelConfigurableCell.swift */; };
+		C5D7EE3026FE523400791F16 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE2F26FE523400791F16 /* TableViewCell.swift */; };
+		C5D7EE3226FE537700791F16 /* ModelConfigurableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE3126FE537700791F16 /* ModelConfigurableTableViewCell.swift */; };
 		C5D7EE3526FE53E100791F16 /* UIKitExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = C5D7EE3426FE53E100791F16 /* UIKitExtensions */; };
 		C5D7EE3826FE53F500791F16 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = C5D7EE3726FE53F500791F16 /* Then */; };
 		C5D7EE3A26FE548E00791F16 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE3926FE548E00791F16 /* ImageCell.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C59F87BA26FE66E400D528B5 /* DefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
+		C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewController.swift; sourceTree = "<group>"; };
 		C59F87BC2703698900D528B5 /* EditSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSnapshot.swift; sourceTree = "<group>"; };
 		C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStrategy.swift; sourceTree = "<group>"; };
 		C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecreateSnapshot.swift; sourceTree = "<group>"; };
@@ -39,11 +39,11 @@
 		C5D7EE1C26FE4C4200791F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5D7EE1F26FE4C4200791F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5D7EE2126FE4C4200791F16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5D7EE2826FE4C9600791F16 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
-		C5D7EE2A26FE4CC400791F16 /* AnyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCellModel.swift; sourceTree = "<group>"; };
+		C5D7EE2826FE4C9600791F16 /* TableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellModel.swift; sourceTree = "<group>"; };
+		C5D7EE2A26FE4CC400791F16 /* AnyTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableViewCellModel.swift; sourceTree = "<group>"; };
 		C5D7EE2C26FE4CD900791F16 /* CryptoHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHashable.swift; sourceTree = "<group>"; };
-		C5D7EE2F26FE523400791F16 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		C5D7EE3126FE537700791F16 /* ModelConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConfigurableCell.swift; sourceTree = "<group>"; };
+		C5D7EE2F26FE523400791F16 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		C5D7EE3126FE537700791F16 /* ModelConfigurableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConfigurableTableViewCell.swift; sourceTree = "<group>"; };
 		C5D7EE3926FE548E00791F16 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C5D7EE3B26FE550400791F16 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		C5D7EE3E26FE555900791F16 /* UITableView+ModelConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ModelConfigurable.swift"; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		C59F87B926FE653C00D528B5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C59F87BA26FE66E400D528B5 /* DefaultViewController.swift */,
+				C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,8 +155,8 @@
 		C5D7EE4126FE566A00791F16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C5D7EE2A26FE4CC400791F16 /* AnyCellModel.swift */,
-				C5D7EE2826FE4C9600791F16 /* CellModel.swift */,
+				C5D7EE2A26FE4CC400791F16 /* AnyTableViewCellModel.swift */,
+				C5D7EE2826FE4C9600791F16 /* TableViewCellModel.swift */,
 				C5D7EE2C26FE4CD900791F16 /* CryptoHashable.swift */,
 			);
 			path = Models;
@@ -165,8 +165,8 @@
 		C5D7EE4226FE567100791F16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C5D7EE2F26FE523400791F16 /* Cell.swift */,
-				C5D7EE3126FE537700791F16 /* ModelConfigurableCell.swift */,
+				C5D7EE2F26FE523400791F16 /* TableViewCell.swift */,
+				C5D7EE3126FE537700791F16 /* ModelConfigurableTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5D7EE3226FE537700791F16 /* ModelConfigurableCell.swift in Sources */,
+				C5D7EE3226FE537700791F16 /* ModelConfigurableTableViewCell.swift in Sources */,
 				C5D7EE4926FE5EC600791F16 /* DiffableTableViewController.swift in Sources */,
 				C5D7EE3C26FE550400791F16 /* ImageModel.swift in Sources */,
 				C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */,
@@ -266,13 +266,13 @@
 				C59F87C02703728B00D528B5 /* SnapshotStrategy.swift in Sources */,
 				C5D7EE2D26FE4CD900791F16 /* CryptoHashable.swift in Sources */,
 				C5D7EE4626FE5E3600791F16 /* TextModel.swift in Sources */,
-				C59F87BB26FE66E400D528B5 /* DefaultViewController.swift in Sources */,
-				C5D7EE3026FE523400791F16 /* Cell.swift in Sources */,
+				C59F87BB26FE66E400D528B5 /* DefaultTableViewController.swift in Sources */,
+				C5D7EE3026FE523400791F16 /* TableViewCell.swift in Sources */,
 				C5D7EE1426FE4C3F00791F16 /* AppDelegate.swift in Sources */,
 				C59F87C2270376BF00D528B5 /* RecreateSnapshot.swift in Sources */,
 				C5D7EE4426FE59A400791F16 /* TextCell.swift in Sources */,
-				C5D7EE2926FE4C9600791F16 /* CellModel.swift in Sources */,
-				C5D7EE2B26FE4CC400791F16 /* AnyCellModel.swift in Sources */,
+				C5D7EE2926FE4C9600791F16 /* TableViewCellModel.swift in Sources */,
+				C5D7EE2B26FE4CC400791F16 /* AnyTableViewCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
