@@ -16,11 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let vc = DefaultViewController()
-        vc.strategy = EditSnapshot()
+        // Create one tab per strategy.
+        let tabs = [
+            UINavigationController(rootViewController:
+                DefaultViewController().then {
+                    // Configure the view controller & its strategy.
+                    $0.strategy = EditSnapshot()
+                    $0.title = "Edit Snapshot"
+                }).then {
+                    // Configure the navigation controller's tab bar item.
+                    $0.tabBarItem.image = UIImage(systemName: "pencil.circle")
+                    $0.tabBarItem.selectedImage = UIImage(systemName: "pencil.circle.fill")
+                    $0.tabBarItem.title = "Edit"
+                },
 
-        let nc = UINavigationController(rootViewController: vc)
-        window?.rootViewController = nc
+            UINavigationController(rootViewController:
+                DefaultViewController().then {
+                    // Configure the view controller & its strategy.
+                    $0.strategy = RecreateSnapshot()
+                    $0.title = "Recreate Snapshot"
+                }).then {
+                    // Configure the navigation controller's tab bar item.
+                    $0.tabBarItem.image = UIImage(systemName: "repeat.circle")
+                    $0.tabBarItem.image = UIImage(systemName: "repeat.circle.fill")
+                    $0.tabBarItem.title = "Recreate"
+                }
+        ]
+
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = tabs
+
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
         return true

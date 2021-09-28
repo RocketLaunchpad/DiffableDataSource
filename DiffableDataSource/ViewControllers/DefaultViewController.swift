@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum DefaultViewControllerSection: Int {
+enum DefaultViewControllerSection: Int, CaseIterable {
     case defaultImageSection
     case defaultTextSection
 }
@@ -24,14 +24,18 @@ class DefaultViewController: DiffableTableViewController<DefaultViewControllerSe
         super.style = .insetGrouped
         super.viewDidLoad()
 
-        title = "Diffable Data Source"
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonTapped(_:)))
 
         tableView.register(cellType: TextCell.self)
         tableView.register(cellType: ImageCell.self)
+
+        tableView.backgroundView = UILabel(frame: tableView.bounds).then {
+            $0.text = "Tap the + button to add an item"
+            $0.textAlignment = .center
+            $0.textColor = .systemGray
+        }
     }
 
     @objc
@@ -57,17 +61,21 @@ class DefaultViewController: DiffableTableViewController<DefaultViewControllerSe
         let model = AnyCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
         strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
-        clearSelection()
+
+        itemAdded()
     }
 
     private func addText(after selectedItem: AnyCellModel?) {
         let model = AnyCellModel(TextModel.model(forIndex: labelCounter))
         labelCounter += 1
         strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
-        clearSelection()
+
+        itemAdded()
     }
 
-    private func clearSelection() {
+    private func itemAdded() {
+        tableView.backgroundView = nil
+
         tableView.indexPathForSelectedRow.map {
             tableView.deselectRow(at: $0, animated: true)
         }
