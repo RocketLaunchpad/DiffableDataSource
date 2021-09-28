@@ -15,7 +15,7 @@ import UIKit
 protocol ModelConfigurableTableViewCell {
 
     /// The type of model that the cell requires. Since `ModelType.CellType` is constrained to be a `UITableViewCell` subclass, this effectively constrains `Self` to be a `UITableViewCell` subclass as well. In fact, if we were to add `UITableViewCell` as a superclass constraint on this protocol, the compiler emits a "redundant superclass constraint" warning.
-    associatedtype ModelType: TableViewCellModel where ModelType.CellType == Self
+    associatedtype ModelType: TableViewCellModel where ModelType.TableViewCellType == Self
 
     /// Configure this cell with the specified model. The implementation should populate the cell's UI controls with data from the model.
     func configure(with model: ModelType)

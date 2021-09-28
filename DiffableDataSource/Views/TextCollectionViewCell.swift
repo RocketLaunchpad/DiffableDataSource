@@ -1,13 +1,13 @@
 //
-//  TextCell.swift
+//  TextCollectionViewCell.swift
 //  DiffableDataSource
 //
-//  Created by Paul Calnan on 9/24/21.
+//  Created by Paul Calnan on 9/28/21.
 //
 
 import UIKit
 
-class TextCell: TableViewCell, ModelConfigurableTableViewCell {
+class TextCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
 
     private let _titleLabel = UILabel(frame: .zero).forAutoLayout().then {
         $0.textAlignment = .center

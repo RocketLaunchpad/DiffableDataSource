@@ -11,15 +11,15 @@ import UIKit
 protocol TableViewCellModel {
 
     /// The type of the cell that this model corresponds to.
-    associatedtype CellType: UITableViewCell
+    associatedtype TableViewCellType: UITableViewCell
 
-    func dequeueAndConfigureCell(in tableView: UITableView, for indexPath: IndexPath) -> CellType
+    func dequeueAndConfigureCell(in tableView: UITableView, for indexPath: IndexPath) -> TableViewCellType
 }
 
 /// This allows us to automatically configure the cell without having to write boilerplate code in the model. By default, implementations of `TableViewCellModel` need only have a typealias defining their `CellType` to be the required `UITableViewCell` subtype.
-extension TableViewCellModel where CellType: ModelConfigurableTableViewCell, CellType.ModelType == Self {
+extension TableViewCellModel where TableViewCellType: ModelConfigurableTableViewCell, TableViewCellType.ModelType == Self {
 
-    func dequeueAndConfigureCell(in tableView: UITableView, for indexPath: IndexPath) -> CellType {
+    func dequeueAndConfigureCell(in tableView: UITableView, for indexPath: IndexPath) -> TableViewCellType {
         return tableView.dequeueCell(for: indexPath, andConfigureWith: self)
     }
 }

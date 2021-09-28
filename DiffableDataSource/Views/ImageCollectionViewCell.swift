@@ -1,13 +1,14 @@
 //
-//  ImageCell.swift
+//  ImageCollectionViewCell.swift
 //  DiffableDataSource
 //
-//  Created by Paul Calnan on 9/24/21.
+//  Created by Paul Calnan on 9/28/21.
 //
 
 import UIKit
 
-class ImageCell: TableViewCell, ModelConfigurableTableViewCell {
+class ImageCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
+    
     private let _imageView = UIImageView(frame: .zero).forAutoLayout().then {
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .link

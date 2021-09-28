@@ -12,7 +12,7 @@ extension UITableView {
 
     /// Uses generics to simplify dequeueing and configuring cells.
     func dequeueCell<CellType, ModelType>(for indexPath: IndexPath, andConfigureWith model: ModelType) -> CellType
-        where CellType: ModelConfigurableTableViewCell, CellType.ModelType == ModelType
+    where CellType: ModelConfigurableTableViewCell, CellType.ModelType == ModelType
     {
         // This uses a UIKitExtensions function: `UITableView.dequeueReusableCell(for:)`, which uses the default `reuseIdentifier` for the cell type.
         let cell: CellType = dequeueReusableCell(for: indexPath)

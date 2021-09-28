@@ -5,6 +5,7 @@
 //  Created by Paul Calnan on 9/24/21.
 //
 
+import Then
 import UIKit
 
 /// Default section indices.
@@ -24,7 +25,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
 
     private var imageCounter = 0
 
-    private var labelCounter = 0
+    private var textCounter = 0
 
     var strategy: SnapshotStrategy!
 
@@ -36,8 +37,8 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
                                                             target: self,
                                                             action: #selector(addButtonTapped(_:)))
 
-        tableView.register(cellType: TextCell.self)
-        tableView.register(cellType: ImageCell.self)
+        tableView.register(cellType: TextTableViewCell.self)
+        tableView.register(cellType: ImageTableViewCell.self)
 
         tableView.backgroundView = UILabel(frame: tableView.bounds).then {
             $0.text = "Tap the + button to add an item"
@@ -74,8 +75,8 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     }
 
     private func addText(after selectedItem: AnyTableViewCellModel?) {
-        let model = AnyTableViewCellModel(TextModel.model(forIndex: labelCounter))
-        labelCounter += 1
+        let model = AnyTableViewCellModel(TextModel.model(forIndex: textCounter))
+        textCounter += 1
         strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
 
         itemAdded()

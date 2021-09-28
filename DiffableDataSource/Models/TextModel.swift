@@ -7,9 +7,11 @@
 
 import UIKit
 
-struct TextModel: TableViewCellModel, Hashable, CryptoHashable {
+struct TextModel: TableViewCellModel, CollectionViewCellModel, Hashable, CryptoHashable {
 
-    typealias CellType = TextCell
+    typealias TableViewCellType = TextTableViewCell
+
+    typealias CollectionViewCellType = TextCollectionViewCell
 
     var title: String
 
