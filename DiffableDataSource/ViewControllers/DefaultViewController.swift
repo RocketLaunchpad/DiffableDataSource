@@ -12,20 +12,13 @@ enum DefaultViewControllerSection: Int {
     case defaultTextSection
 }
 
-protocol DefaultViewControllerDelegate: AnyObject {
-    func defaultViewController(_ sender: DefaultViewController,
-                               insertOrAppend model: AnyCellModel,
-                               after selection: AnyCellModel?,
-                               orAtEndOf section: DefaultViewControllerSection)
-}
-
 class DefaultViewController: DiffableTableViewController<DefaultViewControllerSection> {
 
     private var imageCounter = 0
 
     private var labelCounter = 0
 
-    weak var delegate: DefaultViewControllerDelegate?
+    var strategy: SnapshotStrategy?
 
     override func viewDidLoad() {
         super.style = .insetGrouped
@@ -61,16 +54,16 @@ class DefaultViewController: DiffableTableViewController<DefaultViewControllerSe
     }
 
     private func addImage(after selectedItem: AnyCellModel?) {
-        let model = ImageModel.model(forIndex: imageCounter)
+        let model = AnyCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
-        delegate?.defaultViewController(self, insertOrAppend: AnyCellModel(model), after: selectedItem, orAtEndOf: .defaultImageSection)
+        strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
         clearSelection()
     }
 
     private func addText(after selectedItem: AnyCellModel?) {
-        let model = TextModel.model(forIndex: labelCounter)
+        let model = AnyCellModel(TextModel.model(forIndex: labelCounter))
         labelCounter += 1
-        delegate?.defaultViewController(self, insertOrAppend: AnyCellModel(model), after: selectedItem, orAtEndOf: .defaultTextSection)
+        strategy?.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
         clearSelection()
     }
 

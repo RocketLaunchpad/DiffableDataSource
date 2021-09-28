@@ -24,7 +24,7 @@ class ImageCell: Cell, ModelConfigurableCell {
         addArrangedSubviews(_imageView, _titleLabel)
 
         NSLayoutConstraint.activate([
-            _imageView.heightAnchor.constraint(equalTo: _imageView.widthAnchor, multiplier: 0.3)
+            _imageView.heightAnchor.constraint(equalToConstant: 64),
         ])
     }
 

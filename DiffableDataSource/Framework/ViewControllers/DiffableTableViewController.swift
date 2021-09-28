@@ -11,6 +11,8 @@ class DiffableTableViewController<SectionModel>: UIViewController where SectionM
 
     typealias DataSourceType = UITableViewDiffableDataSource<SectionModel, AnyCellModel>
 
+    typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionModel, AnyCellModel>
+
     private(set) var tableView: UITableView!
 
     var style: UITableView.Style = .plain

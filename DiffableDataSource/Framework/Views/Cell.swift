@@ -13,6 +13,7 @@ class Cell: UITableViewCell {
 
     let stackView = UIStackView().forAutoLayout().then {
         $0.axis = .vertical
+        $0.spacing = 16
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
