@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Then",
+        "repositoryURL": "https://github.com/devxoul/Then",
+        "state": {
+          "branch": null,
+          "revision": "e421a7b3440a271834337694e6050133a3958bc7",
+          "version": "2.7.0"
+        }
+      },
+      {
+        "package": "UIKitExtensions",
+        "repositoryURL": "https://github.com/RocketLaunchpad/UIKitExtensions",
+        "state": {
+          "branch": null,
+          "revision": "3508da363523b3ebad93fd4ebd374e39109ee48f",
+          "version": "1.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
