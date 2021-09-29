@@ -15,11 +15,7 @@
 		C50249DD2703ABDE0096EC11 /* DefaultCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */; };
 		C50249DF2703B2190096EC11 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249DE2703B2190096EC11 /* ImageCollectionViewCell.swift */; };
 		C50249E12703B2220096EC11 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249E02703B2210096EC11 /* TextCollectionViewCell.swift */; };
-		C50249E32703B97C0096EC11 /* DiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249E22703B97C0096EC11 /* DiffableDataSource.swift */; };
 		C59F87BB26FE66E400D528B5 /* DefaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */; };
-		C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BC2703698900D528B5 /* EditSnapshot.swift */; };
-		C59F87C02703728B00D528B5 /* SnapshotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */; };
-		C59F87C2270376BF00D528B5 /* RecreateSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */; };
 		C59F87CB2703A3DE00D528B5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87CA2703A3DE00D528B5 /* CollectionViewCell.swift */; };
 		C5D7EE1426FE4C3F00791F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EE1326FE4C3F00791F16 /* AppDelegate.swift */; };
 		C5D7EE1D26FE4C4200791F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D7EE1C26FE4C4200791F16 /* Assets.xcassets */; };
@@ -48,11 +44,7 @@
 		C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionViewController.swift; sourceTree = "<group>"; };
 		C50249DE2703B2190096EC11 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C50249E02703B2210096EC11 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
-		C50249E22703B97C0096EC11 /* DiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSource.swift; sourceTree = "<group>"; };
 		C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewController.swift; sourceTree = "<group>"; };
-		C59F87BC2703698900D528B5 /* EditSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSnapshot.swift; sourceTree = "<group>"; };
-		C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStrategy.swift; sourceTree = "<group>"; };
-		C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecreateSnapshot.swift; sourceTree = "<group>"; };
 		C59F87C32703980300D528B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C59F87CA2703A3DE00D528B5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = ../../../../../../../Documents/CollectionViewCell.swift; sourceTree = "<group>"; };
 		C5D7EE1026FE4C3F00791F16 /* DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,17 +85,6 @@
 				C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		C59F87BE2703726300D528B5 /* Strategies */ = {
-			isa = PBXGroup;
-			children = (
-				C59F87BC2703698900D528B5 /* EditSnapshot.swift */,
-				C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */,
-				C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */,
-				C50249E22703B97C0096EC11 /* DiffableDataSource.swift */,
-			);
-			path = Strategies;
 			sourceTree = "<group>";
 		};
 		C59F87C42703A39400D528B5 /* CollectionView */ = {
@@ -195,7 +176,6 @@
 				C5D7EE2126FE4C4200791F16 /* Info.plist */,
 				C5D7EE1E26FE4C4200791F16 /* LaunchScreen.storyboard */,
 				C5D7EE2726FE4C7700791F16 /* Models */,
-				C59F87BE2703726300D528B5 /* Strategies */,
 				C59F87B926FE653C00D528B5 /* ViewControllers */,
 				C5D7EE2E26FE521E00791F16 /* Views */,
 			);
@@ -352,14 +332,11 @@
 				C59F87CB2703A3DE00D528B5 /* CollectionViewCell.swift in Sources */,
 				C50249E12703B2220096EC11 /* TextCollectionViewCell.swift in Sources */,
 				C50249DB2703AA7E0096EC11 /* DiffableCollectionViewController.swift in Sources */,
-				C50249E32703B97C0096EC11 /* DiffableDataSource.swift in Sources */,
 				C5D7EE3C26FE550400791F16 /* ImageModel.swift in Sources */,
-				C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */,
 				C5D7EE3F26FE555900791F16 /* UITableView+ModelConfigurable.swift in Sources */,
 				C50249DD2703ABDE0096EC11 /* DefaultCollectionViewController.swift in Sources */,
 				C50249D52703A6C80096EC11 /* ModelConfigurableCollectionViewCell.swift in Sources */,
 				C5D7EE3A26FE548E00791F16 /* ImageTableViewCell.swift in Sources */,
-				C59F87C02703728B00D528B5 /* SnapshotStrategy.swift in Sources */,
 				C5D7EE2D26FE4CD900791F16 /* CryptoHashable.swift in Sources */,
 				C5D7EE4626FE5E3600791F16 /* TextModel.swift in Sources */,
 				C50249D92703A9C50096EC11 /* AnyCollectionViewCellModel.swift in Sources */,
@@ -367,7 +344,6 @@
 				C5D7EE3026FE523400791F16 /* TableViewCell.swift in Sources */,
 				C50249DF2703B2190096EC11 /* ImageCollectionViewCell.swift in Sources */,
 				C5D7EE1426FE4C3F00791F16 /* AppDelegate.swift in Sources */,
-				C59F87C2270376BF00D528B5 /* RecreateSnapshot.swift in Sources */,
 				C5D7EE4426FE59A400791F16 /* TextTableViewCell.swift in Sources */,
 				C5D7EE2926FE4C9600791F16 /* TableViewCellModel.swift in Sources */,
 				C5D7EE2B26FE4CC400791F16 /* AnyTableViewCellModel.swift in Sources */,

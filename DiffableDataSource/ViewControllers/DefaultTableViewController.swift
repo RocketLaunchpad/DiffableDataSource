@@ -27,10 +27,6 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
 
     private var textCounter = 0
 
-    typealias SnapshotStrategyType = AnySnapshotStrategy<DefaultTableViewControllerSection, AnyTableViewCellModel>
-
-    var strategy: SnapshotStrategyType!
-
     override func viewDidLoad() {
         super.style = .insetGrouped
         super.viewDidLoad()
@@ -71,7 +67,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addImage(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
+        insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection)
 
         itemAdded()
     }
@@ -79,9 +75,37 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addText(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(TextModel.model(forIndex: textCounter))
         textCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
+        insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection)
 
         itemAdded()
+    }
+
+    private func insertOrAppend(_ model: AnyTableViewCellModel,
+                                after selectedItem: AnyTableViewCellModel?,
+                                orAtEndOf section: DefaultTableViewControllerSection) {
+
+        if let item = selectedItem {
+            insert(model, after: item)
+        }
+        else {
+            append(model, toSection: section)
+        }
+    }
+
+    private func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel) {
+        var snapshot = dataSource.snapshot()
+        snapshot.insertItems([model], afterItem: selectedItem)
+        dataSource.apply(snapshot)
+    }
+
+    private func append(_ model: AnyTableViewCellModel, toSection section: DefaultTableViewControllerSection) {
+        var snapshot = dataSource.snapshot()
+
+        if !snapshot.sectionIdentifiers.contains(section) {
+            snapshot.appendSections([section])
+        }
+        snapshot.appendItems([model], toSection: section)
+        dataSource.apply(snapshot)
     }
 
     private func itemAdded() {

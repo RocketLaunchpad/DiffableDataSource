@@ -19,10 +19,6 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
 
     private var textCounter = 0
 
-    typealias SnapshotStrategyType = AnySnapshotStrategy<DefaultCollectionViewControllerSection, AnyCollectionViewCellModel>
-
-    var strategy: SnapshotStrategyType!
-
     override func viewDidLoad() {
         layout = UICollectionViewCompositionalLayout { (sectionIndex, _) in
             guard let section = DefaultCollectionViewControllerSection(rawValue: sectionIndex) else {
@@ -71,17 +67,27 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
     private func addImage() {
         let model = AnyCollectionViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
-        strategy.append(model, toSection: .defaultImageSection, in: dataSource)
 
+        append(model, toSection: .defaultImageSection)
         itemAdded()
     }
 
     private func addText() {
         let model = AnyCollectionViewCellModel(TextModel.model(forIndex: textCounter))
         textCounter += 1
-        strategy.append(model, toSection: .defaultTextSection, in: dataSource)
 
+        append(model, toSection: .defaultTextSection)
         itemAdded()
+    }
+
+    private func append(_ model: AnyCollectionViewCellModel, toSection section: DefaultCollectionViewControllerSection) {
+        var snapshot = dataSource.snapshot()
+
+        if !snapshot.sectionIdentifiers.contains(section) {
+            snapshot.appendSections([section])
+        }
+        snapshot.appendItems([model], toSection: section)
+        dataSource.apply(snapshot)
     }
 
     private func itemAdded() {

@@ -7,6 +7,13 @@
 
 import UIKit
 
+/**
+ Base implementation of a collection view controller that uses a diffable data source.
+
+ This allows heterogeneous cell models via the `AnyCollectionViewCellModel` type-erasure. These models are used as item identifiers in the underlying diffable data source.
+
+ The `SectionModel` parameterized-type is the section identifier type specified by subclasses.
+ */
 class DiffableCollectionViewController<SectionModel>: UIViewController where SectionModel: Hashable {
 
     typealias DiffableDataSourceType = UICollectionViewDiffableDataSource<SectionModel, AnyCollectionViewCellModel>

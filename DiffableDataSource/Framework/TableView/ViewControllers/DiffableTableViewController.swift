@@ -7,12 +7,13 @@
 
 import UIKit
 
-/// Base implementation of a table view controller that uses a diffable data source.
-///
-/// This allows heterogeneous cell models via the `AnyTableViewCellModel` type-erasure. These models are used as item identifiers in the underlying diffable data source.
-///
-/// The `SectionModel` parameterized-type is the section identifier type specified by subclasses.
-///
+/**
+ Base implementation of a table view controller that uses a diffable data source.
+
+ This allows heterogeneous cell models via the `AnyTableViewCellModel` type-erasure. These models are used as item identifiers in the underlying diffable data source.
+
+ The `SectionModel` parameterized-type is the section identifier type specified by subclasses.
+ */
 class DiffableTableViewController<SectionModel>: UIViewController where SectionModel: Hashable {
 
     /// The diffable data source type for this type. This is simply an abbreviation to simplify other declarations.
