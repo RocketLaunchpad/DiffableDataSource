@@ -20,27 +20,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabs = [
             UINavigationController(rootViewController:
                 DefaultTableViewController().then {
-                    // Configure the view controller & its strategy.
-                    $0.strategy = AnySnapshotStrategy(EditSnapshot(dataSource: $0.dataSource))
-                    $0.title = "Edit Snapshot"
+                    $0.strategy = AnySnapshotStrategy(EditSnapshot())
+                    $0.title = "Edit Table View Snapshot"
                 }).then {
-                    // Configure the navigation controller's tab bar item.
                     $0.tabBarItem.image = UIImage(systemName: "pencil.circle")
                     $0.tabBarItem.selectedImage = UIImage(systemName: "pencil.circle.fill")
-                    $0.tabBarItem.title = "Edit"
+                    $0.tabBarItem.title = "Edit TV"
+                },
+
+            UINavigationController(rootViewController:
+                DefaultCollectionViewController().then {
+                    $0.strategy = AnySnapshotStrategy(EditSnapshot())
+                    $0.title = "Edit Collection View Snapshot"
+                }).then {
+                    $0.tabBarItem.image = UIImage(systemName: "pencil.circle")
+                    $0.tabBarItem.selectedImage = UIImage(systemName: "pencil.circle.fill")
+                    $0.tabBarItem.title = "Edit CV"
                 },
 
             UINavigationController(rootViewController:
                 DefaultTableViewController().then {
-                    // Configure the view controller & its strategy.
-                    $0.strategy = AnySnapshotStrategy(RecreateSnapshot(dataSource: $0.dataSource))
-                    $0.title = "Recreate Snapshot"
+                    $0.strategy = AnySnapshotStrategy(RecreateSnapshot())
+                    $0.title = "Recreate Table View Snapshot"
                 }).then {
-                    // Configure the navigation controller's tab bar item.
                     $0.tabBarItem.image = UIImage(systemName: "repeat.circle")
-                    $0.tabBarItem.image = UIImage(systemName: "repeat.circle.fill")
-                    $0.tabBarItem.title = "Recreate"
-                }
+                    $0.tabBarItem.selectedImage = UIImage(systemName: "repeat.circle.fill")
+                    $0.tabBarItem.title = "Recreate TV"
+                },
+
+            UINavigationController(rootViewController:
+                DefaultCollectionViewController().then {
+                    $0.strategy = AnySnapshotStrategy(RecreateSnapshot())
+                    $0.title = "Recreate Collection View Snapshot"
+                }).then {
+                    $0.tabBarItem.image = UIImage(systemName: "repeat.circle")
+                    $0.tabBarItem.selectedImage = UIImage(systemName: "repeat.circle.fill")
+                    $0.tabBarItem.title = "Recreate CV"
+                },
         ]
 
         let tabBarController = UITabBarController()

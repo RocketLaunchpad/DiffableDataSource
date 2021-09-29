@@ -9,18 +9,11 @@ import UIKit
 
 /// Strategy to recreate a snapshot from scratch every time a change is made. This is mainly intended to demonstrate that you can recreate the entire snapshot and the diffable data source will still correctly handle the updates.
 class RecreateSnapshot<SectionIdentifierType, ItemIdentifierType>: SnapshotStrategy
-where SectionIdentifierType: Hashable & CaseIterable, ItemIdentifierType: Hashable {
-
-    typealias DiffableDataSourceType = AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>
-
-    var dataSource: DiffableDataSourceType
+where SectionIdentifierType: Hashable & CaseIterable, ItemIdentifierType: Hashable
+{
+    private typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>
 
     private var sections: [SectionIdentifierType: [ItemIdentifierType]] = [:]
-
-    init<T>(dataSource: T)
-    where T: DiffableDataSource, T.SectionIdentifierType == SectionIdentifierType, T.ItemIdentifierType == ItemIdentifierType {
-        self.dataSource = AnyDiffableDataSource(dataSource)
-    }
 
     private func firstSection(containing element: ItemIdentifierType) -> SectionIdentifierType? {
         for (section, elements) in sections {
@@ -31,7 +24,11 @@ where SectionIdentifierType: Hashable & CaseIterable, ItemIdentifierType: Hashab
         return nil
     }
 
-    func insert(_ model: ItemIdentifierType, after selectedItem: ItemIdentifierType, in dataSource: AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>) {
+    func insert<DiffableDataSourceType>(_ model: ItemIdentifierType, after selectedItem: ItemIdentifierType, in dataSource: DiffableDataSourceType)
+    where DiffableDataSourceType : DiffableDataSource,
+          ItemIdentifierType == DiffableDataSourceType.ItemIdentifierType,
+          SectionIdentifierType == DiffableDataSourceType.SectionIdentifierType
+    {
 
         guard let section = firstSection(containing: selectedItem) else {
             preconditionFailure("Cannot find selected item")
@@ -41,26 +38,31 @@ where SectionIdentifierType: Hashable & CaseIterable, ItemIdentifierType: Hashab
         elements.append(model)
         sections[section] = elements
 
-        createAndApplySnapshot()
+        createAndApplySnapshot(in: dataSource)
     }
 
-    func append(_ model: ItemIdentifierType, toSection section: SectionIdentifierType, in dataSource: AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>) {
-
+    func append<DiffableDataSourceType>(_ model: ItemIdentifierType, toSection section: SectionIdentifierType, in dataSource: DiffableDataSourceType)
+    where DiffableDataSourceType : DiffableDataSource,
+          ItemIdentifierType == DiffableDataSourceType.ItemIdentifierType,
+          SectionIdentifierType == DiffableDataSourceType.SectionIdentifierType
+    {
         var elements = sections[section] ?? []
         elements.append(model)
         sections[section] = elements
 
-        createAndApplySnapshot()
+        createAndApplySnapshot(in: dataSource)
     }
 
-    private func createAndApplySnapshot() {
-        var snapshot = dataSource.snapshot()
+    private func createAndApplySnapshot<DiffableDataSourceType>(in dataSource: DiffableDataSourceType)
+    where DiffableDataSourceType : DiffableDataSource,
+          ItemIdentifierType == DiffableDataSourceType.ItemIdentifierType,
+          SectionIdentifierType == DiffableDataSourceType.SectionIdentifierType
+    {
+        var snapshot = SnapshotType()
 
         for section in SectionIdentifierType.allCases {
-            let elements = sections[section] ?? []
-            if !elements.isEmpty {
-                snapshot.appendItems(elements, toSection: section)
-            }
+            snapshot.appendSections([section])
+            snapshot.appendItems(sections[section] ?? [], toSection: section)
         }
 
         dataSource.apply(snapshot)

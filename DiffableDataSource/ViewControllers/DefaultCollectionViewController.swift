@@ -19,6 +19,10 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
 
     private var textCounter = 0
 
+    typealias SnapshotStrategyType = AnySnapshotStrategy<DefaultCollectionViewControllerSection, AnyCollectionViewCellModel>
+
+    var strategy: SnapshotStrategyType!
+
     override func viewDidLoad() {
         layout = UICollectionViewCompositionalLayout { (sectionIndex, _) in
             guard let section = DefaultCollectionViewControllerSection(rawValue: sectionIndex) else {
@@ -47,6 +51,7 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
             $0.textAlignment = .center
             $0.textColor = .systemGray
         }
+        collectionView.allowsSelection = false
     }
 
     @objc private func addButtonTapped(_ sender: Any) {
@@ -66,6 +71,7 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
     private func addImage() {
         let model = AnyCollectionViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
+        strategy.append(model, toSection: .defaultImageSection, in: dataSource)
 
         itemAdded()
     }
@@ -73,6 +79,7 @@ class DefaultCollectionViewController: DiffableCollectionViewController<DefaultC
     private func addText() {
         let model = AnyCollectionViewCellModel(TextModel.model(forIndex: textCounter))
         textCounter += 1
+        strategy.append(model, toSection: .defaultTextSection, in: dataSource)
 
         itemAdded()
     }

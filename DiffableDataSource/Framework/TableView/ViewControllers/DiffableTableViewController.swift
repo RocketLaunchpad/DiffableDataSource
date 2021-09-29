@@ -16,30 +16,18 @@ import UIKit
 class DiffableTableViewController<SectionModel>: UIViewController where SectionModel: Hashable {
 
     /// The diffable data source type for this type. This is simply an abbreviation to simplify other declarations.
-    typealias DataSourceType = UITableViewDiffableDataSource<SectionModel, AnyTableViewCellModel>
-
-    /// The snapshot type for this type. This is simply an abbreviation to simplify other declarations.
-    typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionModel, AnyTableViewCellModel>
+    typealias DiffableDataSourceType = UITableViewDiffableDataSource<SectionModel, AnyTableViewCellModel>
 
     private(set) var tableView: UITableView!
 
     /// The table view style. Subclasses can modify this before calling `super.viewDidLoad()`. Modifying this value after calling `super.viewDidLoad()` will have no effect.
     var style: UITableView.Style = .plain
 
-    private(set) var dataSource: DataSourceType!
+    private(set) var dataSource: DiffableDataSourceType!
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        commonInit()
-    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-
-    private func commonInit() {
-        loadViewIfNeeded()
         createTableView()
         createDataSource()
     }
@@ -52,7 +40,7 @@ class DiffableTableViewController<SectionModel>: UIViewController where SectionM
 
     private func createDataSource() {
         // The cell provider uses the model to dequeue and configure the cell.
-        dataSource = DataSourceType(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell in
+        dataSource = DiffableDataSourceType(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell in
             model.dequeueAndConfigureCell(in: tableView, for: indexPath)
         }
     }

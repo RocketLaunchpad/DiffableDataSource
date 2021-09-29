@@ -27,10 +27,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
 
     private var textCounter = 0
 
-    typealias SnapshotStrategyType =
-        AnySnapshotStrategy<DefaultTableViewControllerSection,
-                            AnyTableViewCellModel,
-                            AnyDiffableDataSource<DefaultTableViewControllerSection, AnyTableViewCellModel>>
+    typealias SnapshotStrategyType = AnySnapshotStrategy<DefaultTableViewControllerSection, AnyTableViewCellModel>
 
     var strategy: SnapshotStrategyType!
 
@@ -74,7 +71,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addImage(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: AnyDiffableDataSource(dataSource))
+        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
 
         itemAdded()
     }
@@ -82,7 +79,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addText(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(TextModel.model(forIndex: textCounter))
         textCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: AnyDiffableDataSource(dataSource))
+        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
 
         itemAdded()
     }

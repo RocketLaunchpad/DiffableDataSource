@@ -9,24 +9,23 @@ import UIKit
 
 /// Strategy to edit a snapshot in place.
 class EditSnapshot<SectionIdentifierType, ItemIdentifierType>: SnapshotStrategy
-where SectionIdentifierType: Hashable, ItemIdentifierType: Hashable {
-
-    typealias DiffableDataSourceType = AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>
-
-    var dataSource: DiffableDataSourceType
-
-    init<T>(dataSource: T)
-    where T: DiffableDataSource, T.SectionIdentifierType == SectionIdentifierType, T.ItemIdentifierType == ItemIdentifierType {
-        self.dataSource = AnyDiffableDataSource(dataSource)
-    }
-
-    func insert(_ model: ItemIdentifierType, after selectedItem: ItemIdentifierType, in dataSource: DiffableDataSourceType) {
+where SectionIdentifierType: Hashable, ItemIdentifierType: Hashable
+{
+    func insert<DiffableDataSourceType>(_ model: ItemIdentifierType, after selectedItem: ItemIdentifierType, in dataSource: DiffableDataSourceType)
+    where DiffableDataSourceType : DiffableDataSource,
+          ItemIdentifierType == DiffableDataSourceType.ItemIdentifierType,
+          SectionIdentifierType == DiffableDataSourceType.SectionIdentifierType
+    {
         var snapshot = dataSource.snapshot()
         snapshot.insertItems([model], afterItem: selectedItem)
         dataSource.apply(snapshot)
     }
 
-    func append(_ model: ItemIdentifierType, toSection section: SectionIdentifierType, in dataSource: DiffableDataSourceType) {
+    func append<DiffableDataSourceType>(_ model: ItemIdentifierType, toSection section: SectionIdentifierType, in dataSource: DiffableDataSourceType)
+    where DiffableDataSourceType : DiffableDataSource,
+          ItemIdentifierType == DiffableDataSourceType.ItemIdentifierType,
+          SectionIdentifierType == DiffableDataSourceType.SectionIdentifierType
+    {
         var snapshot = dataSource.snapshot()
 
         if !snapshot.sectionIdentifiers.contains(section) {

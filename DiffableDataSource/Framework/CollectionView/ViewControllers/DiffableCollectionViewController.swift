@@ -9,28 +9,17 @@ import UIKit
 
 class DiffableCollectionViewController<SectionModel>: UIViewController where SectionModel: Hashable {
 
-    typealias DataSourceType = UICollectionViewDiffableDataSource<SectionModel, AnyCollectionViewCellModel>
-
-    typealias SnapshotType = NSDiffableDataSourceSnapshot<SectionModel, AnyCollectionViewCellModel>
+    typealias DiffableDataSourceType = UICollectionViewDiffableDataSource<SectionModel, AnyCollectionViewCellModel>
 
     private(set) var collectionView: UICollectionView!
 
-    private(set) var dataSource: DataSourceType!
+    private(set) var dataSource: DiffableDataSourceType!
 
     var layout: UICollectionViewLayout!
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        commonInit()
-    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-
-    private func commonInit() {
-        loadViewIfNeeded()
         createCollectionView()
         createDataSource()
     }
@@ -42,7 +31,7 @@ class DiffableCollectionViewController<SectionModel>: UIViewController where Sec
     }
 
     private func createDataSource() {
-        dataSource = DataSourceType(collectionView: collectionView) { (collectionView, indexPath, model) -> UICollectionViewCell in
+        dataSource = DiffableDataSourceType(collectionView: collectionView) { (collectionView, indexPath, model) -> UICollectionViewCell in
             model.dequeueAndConfigureCell(in: collectionView, for: indexPath)
         }
     }
