@@ -44,6 +44,7 @@
 		C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionViewController.swift; sourceTree = "<group>"; };
 		C50249DE2703B2190096EC11 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C50249E02703B2210096EC11 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
+		C579C38D27050BB400A2341D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewController.swift; sourceTree = "<group>"; };
 		C59F87C32703980300D528B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C59F87CA2703A3DE00D528B5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = ../../../../../../../Documents/CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		C5D7EE0726FE4C3F00791F16 = {
 			isa = PBXGroup;
 			children = (
+				C579C38D27050BB400A2341D /* LICENSE */,
 				C59F87C32703980300D528B5 /* README.md */,
 				C5D7EE1226FE4C3F00791F16 /* DiffableDataSource */,
 				C5D7EE1126FE4C3F00791F16 /* Products */,
