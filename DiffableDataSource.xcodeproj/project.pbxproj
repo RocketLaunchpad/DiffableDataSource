@@ -156,7 +156,7 @@
 			children = (
 				C579C38D27050BB400A2341D /* LICENSE */,
 				C59F87C32703980300D528B5 /* README.md */,
-				C5D7EE1226FE4C3F00791F16 /* DiffableDataSource */,
+				C5D7EE1226FE4C3F00791F16 /* Sources */,
 				C5D7EE1126FE4C3F00791F16 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -169,7 +169,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C5D7EE1226FE4C3F00791F16 /* DiffableDataSource */ = {
+		C5D7EE1226FE4C3F00791F16 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				C59F87C52703A39D00D528B5 /* Framework */,
@@ -181,7 +181,7 @@
 				C59F87B926FE653C00D528B5 /* ViewControllers */,
 				C5D7EE2E26FE521E00791F16 /* Views */,
 			);
-			path = DiffableDataSource;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		C5D7EE2726FE4C7700791F16 /* Models */ = {
@@ -491,7 +491,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TBE8Y93CKS;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DiffableDataSource/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -518,7 +518,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TBE8Y93CKS;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DiffableDataSource/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
