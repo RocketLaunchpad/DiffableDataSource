@@ -5,10 +5,12 @@
 //  Created by Paul Calnan on 9/28/21.
 //
 
+import Then
 import UIKit
+import UIKitExtensions
 
 class ImageCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
-    
+
     private let _imageView = UIImageView(frame: .zero).forAutoLayout().then {
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .link

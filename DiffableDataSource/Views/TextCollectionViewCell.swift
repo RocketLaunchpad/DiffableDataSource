@@ -5,7 +5,9 @@
 //  Created by Paul Calnan on 9/28/21.
 //
 
+import Then
 import UIKit
+import UIKitExtensions
 
 class TextCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
 

@@ -5,7 +5,9 @@
 //  Created by Paul Calnan on 9/24/21.
 //
 
+import Then
 import UIKit
+import UIKitExtensions
 
 class TextTableViewCell: TableViewCell, ModelConfigurableTableViewCell {
 
