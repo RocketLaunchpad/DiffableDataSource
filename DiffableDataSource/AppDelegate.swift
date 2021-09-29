@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationController(rootViewController:
                 DefaultTableViewController().then {
                     // Configure the view controller & its strategy.
-                    $0.strategy = EditSnapshot()
+                    $0.strategy = AnySnapshotStrategy(EditSnapshot(dataSource: $0.dataSource))
                     $0.title = "Edit Snapshot"
                 }).then {
                     // Configure the navigation controller's tab bar item.
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationController(rootViewController:
                 DefaultTableViewController().then {
                     // Configure the view controller & its strategy.
-                    $0.strategy = RecreateSnapshot()
+                    $0.strategy = AnySnapshotStrategy(RecreateSnapshot(dataSource: $0.dataSource))
                     $0.title = "Recreate Snapshot"
                 }).then {
                     // Configure the navigation controller's tab bar item.

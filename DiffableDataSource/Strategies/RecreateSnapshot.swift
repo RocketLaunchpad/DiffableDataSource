@@ -8,49 +8,59 @@
 import UIKit
 
 /// Strategy to recreate a snapshot from scratch every time a change is made. This is mainly intended to demonstrate that you can recreate the entire snapshot and the diffable data source will still correctly handle the updates.
-class RecreateSnapshot: SnapshotStrategy {
+class RecreateSnapshot<SectionIdentifierType, ItemIdentifierType>: SnapshotStrategy
+where SectionIdentifierType: Hashable & CaseIterable, ItemIdentifierType: Hashable {
 
-    private var imageSectionContents: [AnyTableViewCellModel] = []
+    typealias DiffableDataSourceType = AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>
 
-    private var textSectionContents: [AnyTableViewCellModel] = []
+    var dataSource: DiffableDataSourceType
 
-    func insert(_ model: AnyTableViewCellModel, after selectedItem: AnyTableViewCellModel, in dataSource: DefaultTableViewController.DataSourceType) {
-        if let index = imageSectionContents.firstIndex(of: selectedItem) {
-            imageSectionContents.insert(model, at: index + 1)
+    private var sections: [SectionIdentifierType: [ItemIdentifierType]] = [:]
+
+    init<T>(dataSource: T)
+    where T: DiffableDataSource, T.SectionIdentifierType == SectionIdentifierType, T.ItemIdentifierType == ItemIdentifierType {
+        self.dataSource = AnyDiffableDataSource(dataSource)
+    }
+
+    private func firstSection(containing element: ItemIdentifierType) -> SectionIdentifierType? {
+        for (section, elements) in sections {
+            if elements.contains(element) {
+                return section
+            }
         }
-        else if let index = textSectionContents.firstIndex(of: selectedItem) {
-            textSectionContents.insert(model, at: index + 1)
-        }
-        else {
+        return nil
+    }
+
+    func insert(_ model: ItemIdentifierType, after selectedItem: ItemIdentifierType, in dataSource: AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>) {
+
+        guard let section = firstSection(containing: selectedItem) else {
             preconditionFailure("Cannot find selected item")
         }
 
-        createAndApplySnapshot(dataSource: dataSource)
+        var elements = sections[section] ?? []
+        elements.append(model)
+        sections[section] = elements
+
+        createAndApplySnapshot()
     }
 
-    func append(_ model: AnyTableViewCellModel, toSection section: DefaultTableViewControllerSection, in dataSource: DefaultTableViewController.DataSourceType) {
-        switch section {
-        case .defaultImageSection:
-            imageSectionContents.append(model)
+    func append(_ model: ItemIdentifierType, toSection section: SectionIdentifierType, in dataSource: AnyDiffableDataSource<SectionIdentifierType, ItemIdentifierType>) {
 
-        case .defaultTextSection:
-            textSectionContents.append(model)
-        }
+        var elements = sections[section] ?? []
+        elements.append(model)
+        sections[section] = elements
 
-        createAndApplySnapshot(dataSource: dataSource)
+        createAndApplySnapshot()
     }
 
-    private func createAndApplySnapshot(dataSource: DefaultTableViewController.DataSourceType) {
-        var snapshot = DefaultTableViewController.SnapshotType()
+    private func createAndApplySnapshot() {
+        var snapshot = dataSource.snapshot()
 
-        if !imageSectionContents.isEmpty {
-            snapshot.appendSections([.defaultImageSection])
-            snapshot.appendItems(imageSectionContents, toSection: .defaultImageSection)
-        }
-
-        if !textSectionContents.isEmpty {
-            snapshot.appendSections([.defaultTextSection])
-            snapshot.appendItems(textSectionContents, toSection: .defaultTextSection)
+        for section in SectionIdentifierType.allCases {
+            let elements = sections[section] ?? []
+            if !elements.isEmpty {
+                snapshot.appendItems(elements, toSection: section)
+            }
         }
 
         dataSource.apply(snapshot)

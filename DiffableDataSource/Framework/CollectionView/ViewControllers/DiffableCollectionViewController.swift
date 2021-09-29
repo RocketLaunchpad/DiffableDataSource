@@ -19,9 +19,18 @@ class DiffableCollectionViewController<SectionModel>: UIViewController where Sec
 
     var layout: UICollectionViewLayout!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        loadViewIfNeeded()
         createCollectionView()
         createDataSource()
     }

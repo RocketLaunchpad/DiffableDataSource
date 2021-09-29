@@ -28,10 +28,18 @@ class DiffableTableViewController<SectionModel>: UIViewController where SectionM
 
     private(set) var dataSource: DataSourceType!
 
-    /// Note: Subclasses must call `super.viewDidLoad()`
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        loadViewIfNeeded()
         createTableView()
         createDataSource()
     }

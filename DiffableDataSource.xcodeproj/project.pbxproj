@@ -15,6 +15,7 @@
 		C50249DD2703ABDE0096EC11 /* DefaultCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */; };
 		C50249DF2703B2190096EC11 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249DE2703B2190096EC11 /* ImageCollectionViewCell.swift */; };
 		C50249E12703B2220096EC11 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249E02703B2210096EC11 /* TextCollectionViewCell.swift */; };
+		C50249E32703B97C0096EC11 /* DiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50249E22703B97C0096EC11 /* DiffableDataSource.swift */; };
 		C59F87BB26FE66E400D528B5 /* DefaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */; };
 		C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BC2703698900D528B5 /* EditSnapshot.swift */; };
 		C59F87C02703728B00D528B5 /* SnapshotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */; };
@@ -47,6 +48,7 @@
 		C50249DC2703ABDE0096EC11 /* DefaultCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionViewController.swift; sourceTree = "<group>"; };
 		C50249DE2703B2190096EC11 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C50249E02703B2210096EC11 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
+		C50249E22703B97C0096EC11 /* DiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSource.swift; sourceTree = "<group>"; };
 		C59F87BA26FE66E400D528B5 /* DefaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewController.swift; sourceTree = "<group>"; };
 		C59F87BC2703698900D528B5 /* EditSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSnapshot.swift; sourceTree = "<group>"; };
 		C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStrategy.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				C59F87BC2703698900D528B5 /* EditSnapshot.swift */,
 				C59F87BF2703728B00D528B5 /* SnapshotStrategy.swift */,
 				C59F87C1270376BF00D528B5 /* RecreateSnapshot.swift */,
+				C50249E22703B97C0096EC11 /* DiffableDataSource.swift */,
 			);
 			path = Strategies;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				C59F87CB2703A3DE00D528B5 /* CollectionViewCell.swift in Sources */,
 				C50249E12703B2220096EC11 /* TextCollectionViewCell.swift in Sources */,
 				C50249DB2703AA7E0096EC11 /* DiffableCollectionViewController.swift in Sources */,
+				C50249E32703B97C0096EC11 /* DiffableDataSource.swift in Sources */,
 				C5D7EE3C26FE550400791F16 /* ImageModel.swift in Sources */,
 				C59F87BD2703698900D528B5 /* EditSnapshot.swift in Sources */,
 				C5D7EE3F26FE555900791F16 /* UITableView+ModelConfigurable.swift in Sources */,

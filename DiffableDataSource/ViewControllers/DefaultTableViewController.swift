@@ -27,7 +27,12 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
 
     private var textCounter = 0
 
-    var strategy: SnapshotStrategy!
+    typealias SnapshotStrategyType =
+        AnySnapshotStrategy<DefaultTableViewControllerSection,
+                            AnyTableViewCellModel,
+                            AnyDiffableDataSource<DefaultTableViewControllerSection, AnyTableViewCellModel>>
+
+    var strategy: SnapshotStrategyType!
 
     override func viewDidLoad() {
         super.style = .insetGrouped
@@ -69,7 +74,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addImage(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(ImageModel.model(forIndex: imageCounter))
         imageCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: dataSource)
+        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultImageSection, in: AnyDiffableDataSource(dataSource))
 
         itemAdded()
     }
@@ -77,7 +82,7 @@ class DefaultTableViewController: DiffableTableViewController<DefaultTableViewCo
     private func addText(after selectedItem: AnyTableViewCellModel?) {
         let model = AnyTableViewCellModel(TextModel.model(forIndex: textCounter))
         textCounter += 1
-        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: dataSource)
+        strategy.insertOrAppend(model, after: selectedItem, orAtEndOf: .defaultTextSection, in: AnyDiffableDataSource(dataSource))
 
         itemAdded()
     }
