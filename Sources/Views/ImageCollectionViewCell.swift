@@ -27,7 +27,7 @@ import Then
 import UIKit
 import UIKitExtensions
 
-class ImageCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
+class ImageCollectionViewCell: CollectionViewCell {
 
     private let _imageView = UIImageView(frame: .zero).forAutoLayout().then {
         $0.contentMode = .scaleAspectFit
@@ -48,6 +48,9 @@ class ImageCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionVi
             _imageView.heightAnchor.constraint(equalToConstant: 64),
         ])
     }
+}
+
+extension ImageCollectionViewCell: ModelConfigurableCollectionViewCell {
 
     func configure(with model: ImageModel) {
         _imageView.image = model.image

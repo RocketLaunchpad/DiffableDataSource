@@ -27,7 +27,7 @@ import Then
 import UIKit
 import UIKitExtensions
 
-class ImageTableViewCell: TableViewCell, ModelConfigurableTableViewCell {
+class ImageTableViewCell: TableViewCell {
 
     private let _imageView = UIImageView(frame: .zero).forAutoLayout().then {
         $0.contentMode = .scaleAspectFit
@@ -48,6 +48,9 @@ class ImageTableViewCell: TableViewCell, ModelConfigurableTableViewCell {
             _imageView.heightAnchor.constraint(equalToConstant: 64),
         ])
     }
+}
+
+extension ImageTableViewCell: ModelConfigurableTableViewCell {
 
     func configure(with model: ImageModel) {
         _imageView.image = model.image

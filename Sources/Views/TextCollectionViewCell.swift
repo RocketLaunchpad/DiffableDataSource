@@ -27,7 +27,7 @@ import Then
 import UIKit
 import UIKitExtensions
 
-class TextCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionViewCell {
+class TextCollectionViewCell: CollectionViewCell {
 
     private let _titleLabel = UILabel(frame: .zero).forAutoLayout().then {
         $0.textAlignment = .center
@@ -44,6 +44,9 @@ class TextCollectionViewCell: CollectionViewCell, ModelConfigurableCollectionVie
         super.cellDidLoad()
         addArrangedSubviews(_titleLabel, _bodyLabel)
     }
+}
+
+extension TextCollectionViewCell: ModelConfigurableCollectionViewCell {
 
     func configure(with model: TextModel) {
         _titleLabel.text = model.title

@@ -25,15 +25,21 @@
 
 import UIKit
 
-struct TextModel: TableViewCellModel, CollectionViewCellModel, Hashable, CryptoHashable {
-
-    typealias TableViewCellType = TextTableViewCell
-
-    typealias CollectionViewCellType = TextCollectionViewCell
+struct TextModel {
 
     var title: String
 
     var body: String
+}
+
+extension TextModel: Hashable, CryptoHashable { }
+
+extension TextModel: TableViewCellModel {
+    typealias TableViewCellType = TextTableViewCell
+}
+
+extension TextModel: CollectionViewCellModel {
+    typealias CollectionViewCellType = TextCollectionViewCell
 }
 
 // MARK: - Placeholder model creation

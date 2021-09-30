@@ -25,22 +25,25 @@
 
 import UIKit
 
-struct ImageModel: TableViewCellModel, CollectionViewCellModel, Hashable, CryptoHashable {
-
-    typealias TableViewCellType = ImageTableViewCell
-
-    typealias CollectionViewCellType = ImageCollectionViewCell
+struct ImageModel {
 
     var title: String
 
     var imageSystemName: String
-}
-
-extension ImageModel {
 
     var image: UIImage? {
         return UIImage(systemName: imageSystemName)
     }
+}
+
+extension ImageModel: Hashable, CryptoHashable { }
+
+extension ImageModel: TableViewCellModel {
+    typealias TableViewCellType = ImageTableViewCell
+}
+
+extension ImageModel: CollectionViewCellModel {
+    typealias CollectionViewCellType = ImageCollectionViewCell
 }
 
 // MARK: - Placeholder model creation
